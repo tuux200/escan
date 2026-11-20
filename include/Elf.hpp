@@ -145,17 +145,18 @@ struct Elf32_Shdr {
 };
 
 struct Elf64_Shdr {
-    Elf64_Word  sh_name;
-    Elf64_Word  sh_type;
-    Elf64_Xword sh_flags;
-    Elf64_Addr  sh_addr;
-    Elf64_Off   sh_offset;
-    Elf64_Xword sh_size;
-    Elf64_Word  sh_link;
-    Elf64_Word  sh_info;
-    Elf64_Xword sh_addralign;
-    Elf64_Xword sh_entsize;
+    Elf64_Word  sh_name;      // Section name (byte offset into the section header string table)
+    Elf64_Word  sh_type;      // Section type (e.g., SHT_PROGBITS, SHT_SYMTAB, SHT_STRTAB, SHT_NOBITS)
+    Elf64_Xword sh_flags;     // Bitmask of section attributes (e.g., SHF_WRITE, SHF_ALLOC, SHF_EXECINSTR)
+    Elf64_Addr  sh_addr;      // Virtual address in memory during execution (0 if not loaded into memory)
+    Elf64_Off   sh_offset;    // Offset in bytes from the beginning of the file to the section data
+    Elf64_Xword sh_size;      // Size of the section in bytes (0 for SHT_NOBITS on disk, but non-zero in memory)
+    Elf64_Word  sh_link;      // Section header table index link (interpretation depends on section type)
+    Elf64_Word  sh_info;      // Extra section information (interpretation depends on section type)
+    Elf64_Xword sh_addralign; // Address alignment constraint (must be a power of 2; 0 or 1 means no alignment)
+    Elf64_Xword sh_entsize;   // Size in bytes of each entry if the section holds a table of fixed-size entries
 };
+
 
 // Special section indices
 
