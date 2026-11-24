@@ -1,6 +1,6 @@
 <div align="center">
 
-# escan
+# escan (in progress)
 
 **Fast, cross-platform ELF analyzer — a modern alternative to `readelf`.**
 
